@@ -1,0 +1,538 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    CHECK TRANSCRIPT PAGE
+{% endblock %}
+
+{% block body %} 
+    <div style="margin-left: 150px;" class="bar-container1">
+        <h1 style="color: navy;">Check Transcript Dashboard</h1>
+        <h3 style="color: blue;text-align: center;">Check Your Transcript</h3>
+    </div>
+
+    <div class="general-container-t">
+      <div class="flex-container">
+        <div class="school-image">
+          <img src="static/profileimages/Musawdeeq.jpeg" alt="LOGO">
+        </div>
+        {% for school in schools %}
+        {% if school.matric_no == user.matric_no%}
+        <div class="school">
+          <h1>{{school.name}}</h1>
+          <h3 style="text-align: center;">{{school.address}}</h3>
+          <p><span>Email :</span>info@mylaspotech.edu.ng</p>
+          <p><span>Website :</span>www.mylaspotech.edu.ng</p>
+          <p><span>Tel :</span> 08151160680, 08167323439</p>
+        </div>
+        {% for  image in images %}
+        {% if image.profile == profile.id%}
+        <div class="school-image">
+          <img src="static/profileimages/{{image.name}}" alt="student image">
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      {% for profile in profiles %}
+      {% if profile.matric_no == user.matric_no%}
+      <div class="container">
+        <div class="flex-container">
+          <div class="student">
+            <h2 style="font-size: 22px;font-weight: bold;">SURNAME : <span style="padding-left: 50px;">{{profile.lastname}}</span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">FIRST NAME : <span style="padding-left: 28px;">{{profile.firstname}} </span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">OTHER NAME : <span style="padding-left: 10px;">{{profile.othername}}</span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">MATRIC_NO : <span style="padding-left: 30px;">{{user.matric_no}}</span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">D.O.B : <span style="padding-left: 100px;">{{profile.dob.strftime('%d-%m-%y')}}</span></h2>
+          </div>
+          <hr>
+          <div class="student">
+            <h2 style="font-size: 22px;font-weight: bold;">FACULTY : <span style="padding-left: 95px;">{{school.faculty}}</span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">DEPARTMENT : <span style="padding-left: 45px;">{{school.department}}</span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">OPTION : <span style="padding-left: 110px;">{{school.discipline}}</span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">STUDENT TYPE : <span>FULL TIME HND</span></h2>
+            <h2 style="font-size: 22px;font-weight: bold;">GENDER : <span style="padding-left: 100px;">{{profile.gender}}</span></h2>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endfor %}
+
+      
+      <div>
+        <div class="flex-contain">
+          <div>
+            <h3 style="color: black;">LEVEL : <span style="color: red;">FIRST YEAR</span></h3>
+          </div>
+          <div>
+            <h3 style="color: black;">SEMESTER : <span style="color: red;">FIRST SEMESTER</span></h3>
+          </div>
+        </div>
+        <div class="styled-table">
+          <table>
+            <thead >
+              <tr>
+                <th>Course Title</th>
+                <th>Course Code</th>
+                <th>Course Unit</th>
+                <th>Score</th>
+                <th>Grade</th>
+                <th>Grade Point</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+              
+            </thead>
+            {% for course in courses %}
+            {% if course.matric_no == user.matric_no %}
+            {% if course.level == 101 %}
+            <tbody class="body">
+              <tr>
+                <td>{{course.course_title}}</td>
+                <td>{{course.course_code}}</td>
+                <td>{{course.course_unit}}</td>
+                <td>{{course.score}}</td>
+                <td>{{course.grade}}</td>
+                <td>{{course.grade_point}}</td>
+                <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+                <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+              </tr>
+            </tbody>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+      
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa101}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa101}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">LEVEL : <span style="color: red;">FIRST YEAR</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">SEMESTER : <span style="color: red;">SECOND SEMESTER</span></h3>
+        </div>
+      </div>
+      <div class="styled-table">
+        <table>
+          <thead >
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Grade Point</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          
+          {% for course in courses %}
+          {% if course.matric_no == user.matric_no %}
+          {% if course.level == 102 %}
+          <tbody class="body">
+            <tr>
+              <td>{{course.course_title}}</td>
+              <td>{{course.course_code}}</td>
+              <td>{{course.course_unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.grade}}</td>
+              <td>{{course.grade_point}}</td>
+              <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+              <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa102}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa102}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">LEVEL : <span style="color: red;">SECOND YEAR</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">SEMESTER : <span style="color: red;">FIRST SEMESTER</span></h3>
+        </div>
+      </div>
+      <div class="styled-table">
+        <table>
+          <thead >
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Grade Point</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            
+          </thead>
+          {% for course in courses %}
+          {% if course.matric_no == user.matric_no %}
+          {% if course.level == 201 %}
+          <tbody class="body">
+            <tr>
+              <td>{{course.course_title}}</td>
+              <td>{{course.course_code}}</td>
+              <td>{{course.course_unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.grade}}</td>
+              <td>{{course.grade_point}}</td>
+              <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+              <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa201}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa201}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">LEVEL : <span style="color: red;">SECOND YEAR</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">SEMESTER : <span style="color: red;">SECOND SEMESTER</span></h3>
+        </div>
+      </div>
+      <div class="styled-table">
+        <table>
+          <thead >
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Grade Point</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            
+          </thead>
+          {% for course in courses %}
+          {% if course.matric_no == user.matric_no %}
+          {% if course.level == 202 %}
+          <tbody class="body">
+            <tr>
+              <td>{{course.course_title}}</td>
+              <td>{{course.course_code}}</td>
+              <td>{{course.course_unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.grade}}</td>
+              <td>{{course.grade_point}}</td>
+              <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+              <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa202}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa202}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">LEVEL : <span style="color: red;">THIRD YEAR</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">SEMESTER : <span style="color: red;">FIRST SEMESTER</span></h3>
+        </div>
+      </div>
+      <div class="styled-table">
+        <table>
+          <thead >
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Grade Point</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            
+          </thead>
+          {% for course in courses %}
+          {% if course.matric_no == user.matric_no %}
+          {% if course.level == 301 %}
+          <tbody class="body">
+            <tr>
+              <td>{{course.course_title}}</td>
+              <td>{{course.course_code}}</td>
+              <td>{{course.course_unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.grade}}</td>
+              <td>{{course.grade_point}}</td>
+              <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+              <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa301}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa301}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">LEVEL : <span style="color: red;">THIRD YEAR</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">SEMESTER : <span style="color: red;">SECOND SEMESTER</span></h3>
+        </div>
+      </div>
+      <div class="styled-table">
+        <table>
+          <thead >
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Grade Point</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            
+          </thead>
+          {% for course in courses %}
+          {% if course.matric_no == user.matric_no %}
+          {% if course.level == 302 %}
+          <tbody class="body">
+            <tr>
+              <td>{{course.course_title}}</td>
+              <td>{{course.course_code}}</td>
+              <td>{{course.course_unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.grade}}</td>
+              <td>{{course.grade_point}}</td>
+              <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+              <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa302}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa302}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">LEVEL : <span style="color: red;">FOURTH YEAR</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">SEMESTER : <span style="color: red;">FIRST SEMESTER</span></h3>
+        </div>
+      </div>
+      <div class="styled-table">
+        <table>
+          <thead >
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Grade Point</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            
+          </thead>
+          {% for course in courses %}
+          {% if course.matric_no == user.matric_no %}
+          {% if course.level == 401 %}
+          <tbody class="body">
+            <tr>
+              <td>{{course.course_title}}</td>
+              <td>{{course.course_code}}</td>
+              <td>{{course.course_unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.grade}}</td>
+              <td>{{course.grade_point}}</td>
+              <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+              <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+      
+
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa401}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa401}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">LEVEL : <span style="color: red;">FOURTH YEAR</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">SEMESTER : <span style="color: red;">SECOND SEMESTER</span></h3>
+        </div>
+      </div>
+      <div class="styled-table">
+        <table>
+          <thead >
+            <tr>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Grade Point</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            
+          </thead>
+          {% for course in courses %}
+          {% if course.matric_no == user.matric_no %}
+          {% if course.level == 402 %}
+          <tbody class="body">
+            <tr>
+              <td>{{course.course_title}}</td>
+              <td>{{course.course_code}}</td>
+              <td>{{course.course_unit}}</td>
+              <td>{{course.score}}</td>
+              <td>{{course.grade}}</td>
+              <td>{{course.grade_point}}</td>
+              <td ><button style="color: blue;font-size: 20px;font-weight: bold;"><a href="/update/course/{{course.id}}">Edit</a></button> </td>
+              <td ><button style="color: red;font-size: 20px;font-weight: bold;"><a style="color: red;" href="/delete/course/{{course.id}}">delete</a></button> </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </table>
+      </div>
+      
+      
+      <div class="flex-contain">
+        <div>
+          <h3 style="color: black;">GPA : <span style="color: red;">{{gpa402}}</span></h3>
+        </div>
+        <div>
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa402}}</span></h3>
+        </div>
+      </div>
+      <hr>
+      <hr>
+      <div class="flex-contain">
+        <div >
+          <h3 style="color: black;">CGPA : <span style="color: red;">{{cgpa402}}</span></h3>
+        </div>
+        {% if cgpa402 >=4.5 and cgpa402 <=5.0 %}
+        <div>
+          <h3 style="color: black;">CLASSIFICATION : <span style="color: green;">FIRST CLASS</span></h3>
+        </div>
+        {% elif cgpa402 >=3.5 and cgpa402 <=4.49 %}
+        <div>
+          <h3 style="color: black;">CLASSIFICATION : <span style="color: green;">SECOND CLASS UPPER</span></h3>
+        </div>
+        {% elif cgpa402 >=2.49 and cgpa402 <=3.49 %}
+        <div>
+          <h3 style="color: black;">CLASSIFICATION : <span style="color: green;">SECOND CLASS LOWER</span></h3>
+        </div>
+        {% elif cgpa402 >=1.5 and cgpa402 <=2.48 %}
+        <div>
+          <h3 style="color: black;">CLASSIFICATION : <span style="color: green;">THIRD CLASS</span></h3>
+        </div>
+        {% else %}
+        <div>
+          <h3 style="color: black;">CLASSIFICATION : <span style="color: green;">LOADING....</span></h3>
+        </div>
+        {% endif %}
+      </div>
+      <center>
+        <div>
+          <a href="/transcript/{{user.id}}"><button style="margin-left: -10px;font-weight: bold;background-color: red;" class="btn btn-primary" type="submit">Get Transcript</button></a>
+        </div>
+      </center>
+  </div>  
+{% endblock %}

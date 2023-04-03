@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    PROFILE SETTINGS PAGE
+{% endblock %}
+
+{% block body %} 
+    <div style="margin-left: 50px;" class="bar-container1">
+        <h1 style="color: navy;"> Settings Dashboard</h1>
+        <h3 style="color: blue;text-align: center;">Account Settings</h3>
+    </div>
+
+    <div style="display: flex;justify-content: center;">
+        <div class="col-xl-8">
+          <!-- Account settings card-->
+          <br>
+          <br>
+          <div class="card mb-4" style="margin-left: 20px;">
+              <div class="card-header" style="color: navy;font-weight: bold;font-size: 22px;text-align: center;border-bottom: 5px solid lightgray;">Update Your Account</div>
+              <div class="card-body">
+                  <form action="/profile_settings" method="post">
+                      <div class="row gx-3 mb-3">
+                          <!-- Form Group (first name)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="inputFirstName">First name</label>
+                              <input class="form-control" id="firstname"name="firstname" type="text" placeholder="Enter your first name" >
+                          </div>
+                          <!-- Form Group (last name)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="inputLastName">Last name</label>
+                              <input class="form-control" id="lastname"name="lastname" type="text" placeholder="Enter your last name" >
+                          </div>
+                      </div>
+                      <div class="row gx-3 mb-3">
+                        <!-- Form Group (other name)-->
+                        <div class="col-md-6">
+                            <label style="color: red;font-weight: bold;" class="small mb-1" for="inputOtherName">Other name</label>
+                            <input class="form-control" id="othername"name="othername" type="text" placeholder="Enter your Other name">
+                        </div>
+                        <!-- Form Group (matric number)-->
+                        <div class="col-md-6">
+                            <label style="color: red;font-weight: bold;" class="small mb-1" for="matric_no">Matric No</label>
+                            <input class="form-control" id="matric_no" name="matric_no" type="number" placeholder="Enter Matric No">
+                        </div>
+                    </div>
+                      
+                      <div class="row gx-3 mb-3">
+                          <!-- Form Group (gender)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="inputGender">Gender</label>
+                              <input class="form-control" id="gender" name="gender" type="text" placeholder="Enter your Gender" >
+                          </div>
+                          <!-- Form Group (DOB)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="dob">Birth Date</label>
+                              <input class="form-control" id="dob"name="dob" type="text" placeholder="1995-05-30 08:37:28.965000" >
+                          </div>
+                      </div>
+                      <center>
+                        <button style="background: green;" class="btn btn-primary" type="submit">Update Profile</button>
+                      </center>
+                      
+                  </form>
+              </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

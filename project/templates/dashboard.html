@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    DASHBOARD PAGE
+{% endblock %}
+
+{% block body %} 
+    <div style="width: 1200px;margin-left: 50px;" class="bar-container1">
+        <h1 style="color: navy;"> Profile Dashboard</h1>
+        <h3 style="color: blue;text-align: center;">Profile Information</h3>
+    </div>
+    {% for user in users %}
+    {% for profile in profiles%}
+    {% for school in schools %}
+    {% if user.username == current_user %}
+    {% if user.matric_no == profile.matric_no%}
+    {% if user.matric_no == school.matric_no%}
+    <div style="display: flex;justify-content: space-between;">
+        <div  class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <br>
+                <br>
+                
+                <div class="card mb-4 mb-xl-0" style="margin-left:70px;width: 520px;">
+                    <div class="card-header" style="color: navy;font-weight: bold;font-size: 22px;text-align: center;border-bottom: 5px solid lightgray;">Profile Details</div>
+                        <div class="card-body text-center">
+                            <!-- Profile picture image-->
+                            {% for  image in images%}
+                            {% if image.profile_id == profile.id%}
+                                <img class="img-account-profile rounded-circle mb-2" style="width:200px ;" src="static/profileimages/{{image.name}}" alt="my image">
+                                <!-- Profile picture help block-->
+                            {% endif %}
+                            {% endfor %}   
+                                <h3 style="color: navy;font-weight: bold;">{{profile.lastname}} {{profile.firstname}} {{profile.othername}}</h3>
+                                <a style="font-weight: bold;font-size: 15px;" href="#">{{user.email}}</a>
+                                <br>
+                                <div class="small font-italic text-muted mb-4">
+                                <a style="font-weight: bold;font-size: 20px;" href="#">@{{user.username}}</a>
+                                <h5>Matric No : <span style="color: red;">{{user.matric_no}}</span></h5>
+                                </div>
+                                <h5>D.O.B : <span style="color: red;">{{profile.dob.strftime('%d-%m-%y')}}</span></h5>
+                                <div style="display: flex;justify-content: space-evenly;">
+                                <h6 style="color: navy;font-weight: bold;">{{profile.gender}}</h6>
+                                </div>
+                                <br>
+                                <h6>Member Since : <span style="color: red;">{{profile.created_at.strftime('%d-%m-%y')}}</span></h6>
+                                <br>
+                        
+                                <div style="display: flex;justify-content: space-evenly;">
+
+                                    <a href="/profile_image"><button style="margin-left: -10px;font-weight: bold;background-color: green;" class="btn btn-primary" type="submit">Upload new image</button></a>
+                                    <a href="/check/school/{{school.id}}"><button style="margin-left: -10px;font-weight: bold;background-color: blue;" class="btn btn-primary" type="submit">Check School</button></a>
+                                    <a href="/check/transcript/{{user.id}}"><button style="margin-left: -10px;font-weight: bold;background-color: red;" class="btn btn-primary" type="submit">Check Transcript</button></a>
+                                </div>  
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br>
+    
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <br>
+                <br>
+                <div class="card mb-4" style="margin-left: 20px;width: 650px;">
+                    <div class="card-header" style="color: navy;font-weight: bold;font-size: 22px;text-align: center;">Account Details</div>
+                        <div class="card-body">
+                            <form action="/profile/{{profile.id}}" method="POST">
+                                    <!-- Form Group (first name)-->
+                                <div>
+                                    <div class="form-group">
+                                        <label style="color: red;font-weight: bold;font-size: 20px;" class="small mb-1" for="inputFirstName">First name</label>
+                                        <input class="form-control" id="firstname"name="firstname" type="text" placeholder="Enter your first name" value="{{profile.firstname}}">
+                                    </div>
+                                </div>
+                                <!-- Form Group (last name)-->
+                                <div>
+                                    <div class="form-group">
+                                        <label style="color: red;font-weight: bold;font-size: 20px;" class="small mb-1" for="inputLastName">Last name</label>
+                                        <input class="form-control" id="lastname"name="lastname" type="text" placeholder="Enter your last name" value="{{profile.lastname}}">
+                                    </div>
+                                    
+                                </div>
+                                <!-- Form Group (other name)-->
+                                <div>
+                                    <div class="form-group">
+                                        <label style="color: red;font-weight: bold;font-size: 20px;" class="small mb-1" for="inputOtherName">Other name</label>
+                                        <input class="form-control" id="othername"name="othername" type="text" placeholder="Enter your Other name" value="{{profile.othername}}">
+                                    </div>
+                                    
+                                </div>
+                                <!-- Form Group (matric number)-->
+                                <div>
+                                    <div class="form-group">
+                                        <label style="color: red;font-weight: bold;font-size: 20px;" class="small mb-1" for="matric_no">Matric No</label>
+                                        <input class="form-control" id="matric_no" name="matric_no" type="number" placeholder="Enter your Matric Number" value="{{profile.matric_no}}">
+                                    </div>
+                                    
+                                </div>
+                            
+                                <!-- Form Row (gender)       -->
+                                <div>
+                                    <div class="form-group">
+                                        <label style="color: red;font-weight: bold;font-size: 20px" class="small mb-1" for="inputGender">Gender</label>
+                                        <input class="form-control" id="gender" name="gender" type="text" placeholder="Enter your Gender" value="{{profile.gender}}">
+                                    </div>
+                                    
+                                    
+                                </div>       
+                                    <!-- Form Group (DOB)-->
+                                <div>
+                                    <div class="form-group">
+                                        <label style="color: red;font-weight: bold;font-size: 20px;" class="small mb-1" for="dob">Birth Date</label>
+                                        <input class="form-control" id="dob"name="dob" type="text" placeholder="Enter your Birth Date" value="{{profile.dob}}">
+                                    </div>
+                                    
+                                </div>
+                            
+                                <center>
+                                    <button style="font-weight: bolder;background: green;" class="btn btn-primary" type="submit">Save changes</button>
+                                    <a href="/delete_profile/{{user.profile.id}}"><button style="font-weight: bold;background-color: red;" class="btn btn-primary" type="submit">Delete Account</button></a>
+                                </center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    SCHOOL PAGE
+{% endblock %}
+
+{% block body %} 
+    <div style="margin-left: 150px;" class="bar-container1">
+        <h1 style="color: navy;"> School Dashboard</h1>
+        <h3 style="color: blue;text-align: center;">School Registration</h3>
+    </div>
+
+    <div style="display: flex;justify-content: center;">
+        <div class="col-xl-8">
+          <!-- School Creation card-->
+          <br>
+          <br>
+          <div class="card mb-4" style="margin-left: 20px;">
+              <div class="card-header" style="color: navy;font-weight: bold;font-size: 22px;text-align: center;border-bottom: 5px solid lightgray;">Register Your School</div>
+              <div class="card-body">
+                  <form action="/create/school_info" method="post">
+                      <div class="row gx-3 mb-3">
+                          <!-- Form Group ( name)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="name">School Name</label>
+                              <input class="form-control" id="name"name="name" type="text" placeholder="Enter your School Name" >
+                          </div>
+                          <!-- Form Group (address)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="address">School Address</label>
+                              <input class="form-control" id="address"name="address" type="text" placeholder="Enter your School Address" >
+                          </div>
+                      </div>
+                      <div class="row gx-3 mb-3">
+                        <!-- Form Group (department)-->
+                        <div class="col-md-6">
+                            <label style="color: red;font-weight: bold;" class="small mb-1" for="department">Department</label>
+                            <input class="form-control" id="department"name="department" type="text" placeholder="Enter your School Department">
+                        </div>
+                        <!-- Form Group (matric number)-->
+                        <div class="col-md-6">
+                            <label style="color: red;font-weight: bold;" class="small mb-1" for="matric_no">Matric No</label>
+                            <input class="form-control" id="matric_no" name="matric_no" type="number" placeholder="Enter Matric No">
+                        </div>
+                    </div>
+                      
+                      <div class="row gx-3 mb-3">
+                          <!-- Form Group (faculty)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="faculty">Faculty</label>
+                              <input class="form-control" id="faculty" name="faculty" type="text" placeholder="Enter your Faculty" >
+                          </div>
+                          <!-- Form Group (discipline)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="discipline">Discipline</label>
+                              <input class="form-control" id="discipline"name="discipline" type="text" placeholder="Enter Your Discipline" >
+                          </div>
+                      </div>
+                      <center>
+                        <button style="background: green;" class="btn btn-primary" type="submit">Create School Info</button>
+                      </center>
+                      
+                  </form>
+              </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

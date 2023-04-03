@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    UPDATE COURSE PAGE
+{% endblock %}
+
+{% block body %} 
+    <div style="margin-left: 50px;" class="bar-container1">
+        <h1 style="color: navy;"> Course Update Dashboard</h1>
+        <h3 style="color: blue;text-align: center;">Course Update</h3>
+    </div>
+
+    <div style="display: flex;justify-content: center;">
+        <div class="col-xl-8">
+          <!-- Course Updating card-->
+          <br>
+          <br>
+          <div class="card mb-4" style="margin-left: 20px;">
+              <div class="card-header" style="color: navy;font-weight: bold;font-size: 22px;text-align: center;border-bottom: 5px solid lightgray;">Update Your School Courses</div>
+              <div class="card-body">
+                  <form action="/update/course/{id}" method="POST">
+                      <div class="row gx-3 mb-3">
+                          <!-- Form Group (course title)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="course_title">Course Title</label>
+                              <input class="form-control" id="course_title"name="course_title" type="text" value={{course.course_title}} >
+                          </div>
+                          <!-- Form Group (course code)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="course_code">Course Code</label>
+                              <input class="form-control" id="course_code"name="course_code" type="text" value={{course.course_code}} >
+                          </div>
+                      </div>
+                      <div class="row gx-3 mb-3">
+                        <!-- Form Group (course unit)-->
+                        <div class="col-md-6">
+                            <label style="color: red;font-weight: bold;" class="small mb-1" for="course_unit">Course Unit</label>
+                            <input class="form-control" id="course_unit"name="course_unit" type="text" value={{course.course_unit}}>
+                        </div>
+                        <!-- Form Group (matric no)-->
+                        <div class="col-md-6">
+                            <label style="color: red;font-weight: bold;" class="small mb-1" for="matric_no">Matric No</label>
+                            <input class="form-control" id="matric_no" name="matric_no" type="number" value={{course.matric_no}}>
+                        </div>
+                    </div>
+                      
+                      <div class="row gx-3 mb-3">
+                          <!-- Form Group (level)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="level">Level</label>
+                              <input class="form-control" id="level" name="level" type="text" value={{course.level}} >
+                          </div>
+                          <!-- Form Group (score)-->
+                          <div class="col-md-6">
+                              <label style="color: red;font-weight: bold;" class="small mb-1" for="score">Score</label>
+                              <input class="form-control" id="score"name="score" type="text" value={{course.score}} >
+                          </div>
+                      </div>
+                      <center>
+                        <button style="background: green;" class="btn btn-primary" type="submit">Update Course</button>
+                      </center>
+                      
+                  </form>
+              </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

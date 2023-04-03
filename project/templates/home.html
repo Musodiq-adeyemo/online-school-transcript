@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    HOME Page
+{% endblock %}
+
+{% block body %} 
+    <div style="margin-left: 150px;" class="bar-container1">
+        <h1 style="color: navy;"> Home Page</h1>
+        <h3 style="color: blue;text-align: center;">Hey <span style="color: red;">New User</span> Welcome to Our Home Page</h3>
+    </div>
+
+    <div style="display: flex;justify-content: center;">
+        <div class="col-xl-8">
+          <!-- Home  Page card-->
+          <br>
+          <div class="card mb-4" style="margin-left: 20px;">
+              <div class="card-header" style="color: navy;font-weight: bold;font-size: 30px;text-align: center;border-bottom: 5px solid lightgray;">ABOUT US</div>
+              <div class="card-body">
+                <p class="lead">This Online Transcript Website is use to produce a temporary transcript for students after providing the neccessary information needed.<br>Looking for where to get an online temporary transcript? You are in the right place.</p>
+                <br>
+                
+                <div class="card-header" style="color: navy;font-weight: bold;font-size: 30px;text-align: center;border-top: 5px solid lightgray;border-bottom: 5px solid lightgray;">ABOUT CEO</div>
+                <br>
+                <div style="display: flex;justify-content: space-evenly;">
+                  <div>
+                    <img style="width:200px ;" src="static/Musawdeeq.jpeg" alt="">
+                  </div>
+                  <div >
+                    <h2 style="color: green;font-weight: bold;text-align: center;">ADEYEMO MUSODIQ OLALEKAN</h2>
+                    <br>
+                    <h4 style="font-weight: bold;padding-left: 35px;">I am an aspiring backend developer at AltSchool Africa</h4>
+                    <br>
+                    <h6 style="font-weight: bold;font-size: 30px;padding-left: 100px;">Year : <span style="color: red;font-weight: bold;">2022</span></h6>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div style="display: flex;justify-content: space-evenly;">
+                  <a style="color: blue;font-weight: bold;"class="nav-link" href="https://twitter.com/sirmuso?s=09">Twitter</a>
+    
+                  <a style="color: blue;font-weight: bold;" class="nav-link" href="https://leetcode.com/musawdeeq/">Leetcode</a>
+    
+                  <a style="color: blue;font-weight: bold;" class="nav-link" href="https://www.linkedin.com/in/musodiq-adeyemo-078b6a231">Linkedin</a>
+                  
+                  <a style="color: blue;font-weight: bold;" class="nav-link" href="https://github.com/musodiq-adeyemo">GitHub</a>
+                </div>
+                <br>
+                <center>
+                  <p class="lead">
+                    <a href="/register" style="background-color: green;"class="btn btn-lg btn-secondary">Let's get started</a>
+                  </p>
+                </center>
+              </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

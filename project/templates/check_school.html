@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+
+{% block title %} 
+    SCHOOL INFO PAGE
+{% endblock %}
+
+{% block body %}
+<div style="margin-left: 50px;" class="bar-container1">
+    <h1 style="color: navy;"> Check School</h1>
+    <h3 style="color: blue;text-align: center;">Check School Information</h3>
+</div>
+
+<div class="container">
+    <div>
+      <div style="margin: 70px;margin-left: 200px;padding: 10px;" class="student">
+        <h2>SCHOOL ID : <span style="color: red;padding-left: 200px;">1</span></h2>
+        <h2>SCHOOL NAME : <span style="padding-left: 120px;">FULL TIME HND</span></h2>
+        <h2>FACULTY : <span style="padding-left: 150px;">PURE AND APPLIED SCIENCE</span></h2>
+        <h2>DEPARTMENT : <span style="padding-left: 145px;">PHYSICAL SCIENCE</span></h2>
+        <h2>OPTION : <span style="padding-left: 170px;">PHYSICS WITH ELECTRONIC</span></h2>
+        <h2>GENDER : <span style="padding-left: 200px;">MALE</span></h2>
+        <h2>D.O.B : <span style="padding-left: 200px;">30-05-1995</span></h2>
+      </div>
+    </div>
+    <div style="display: flex;justify-content: space-evenly;">
+        <a href="/profile"><button style="font-weight: bold;background-color: green;" class="btn btn-primary" type="submit">Go Profile</button></a>
+        <a href="/update/school_info/{{school.id}}"><button style="font-weight: bold;background-color: blue;" class="btn btn-primary" type="submit">Edit School</button></a>
+        <a href="/delete/school_info/{{school.id}}"><button style="margin-left: -10px;font-weight: bold;background-color: red;" class="btn btn-primary" type="submit">Delete School</button></a>
+    </div>
+</div>
+
+{% endblock %}

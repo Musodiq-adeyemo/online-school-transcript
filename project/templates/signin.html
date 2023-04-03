@@ -1,0 +1,49 @@
+{% extends "base.html" %} 
+
+{% block title %} 
+    LOGIN PAGE
+{% endblock %}
+
+{% block body %}
+<div style="margin-left: 50px;" class="bar-container1">
+    <h1 style="color: navy;"> User Login</h1>
+    <h3 style="color: blue;text-align: center;">Login Authentication</h3>
+</div>
+<div style="display: flex;justify-content: center;">
+    <div class="col-xl-8">
+      <br>
+      <br>
+      <div class="card mb-4" style="margin-left: 20px;">
+        <br>
+        <h4 style="color: red;text-align: center;font-weight: bold;">{{errors}}</h4>
+          <div class="card-header" style="color: navy;font-weight: bold;font-size: 30px;text-align: center;border-bottom: 5px solid lightgray;">Login Your Account</div>
+          <div class="card-body">
+            <form action="/signin" method ='POST'>
+                <div class="form-group">
+                  <label style="color: red;font-weight: bold;" for="username">USERNAME:</label>
+                  <input type="text" class="form-control" id="username" name="username"  aria-describedby="Enter Username" placeholder="Enter Username">
+        
+                </div>
+                
+                <div class="form-group">
+                    <label style="color: red;font-weight: bold;" for="password">PASSWORD:</label>
+                    <input type="password" class="form-control" id="password" name="password"  aria-describedby="Enter Password" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox"> Remember Me
+                    <span class="checkmark"></span>
+                </div>
+                <center>
+                    <button style="background: green;" class="btn btn-primary" type="submit">Login Now</button>
+                </center>
+                <br>
+                <h5>
+                    Do not have an account, <a href="/register">Create One</a>
+                </h5>
+                
+              </div>
+            </form>
+      </div>
+    </div>
+</div>
+{% endblock %}
